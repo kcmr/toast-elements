@@ -44,7 +44,7 @@ function ToastConsole({ duration = 2000, methods = ['log', 'info', 'warn', 'erro
         console[method] = originalMethods.get(method);
       });
     };
-  });
+  }, [setType, setOpened, setMessage]);
 
   return html`
     <div class="logger ${type} opened-${opened}">

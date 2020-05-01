@@ -7,12 +7,29 @@ function DemoApp() {
   const info = (m) => useCallback(() => console.info(m));
   const error = (m) => useCallback(() => console.error(m));
 
-  return html` <div class="buttons">
-    <button @click=${log('hello world!')}>console.log</button>
-    <button @click=${warn('a warning message')}>console.warn</button>
-    <button @click=${info('this is an informative message')}>console.info</button>
-    <button @click=${error('something goes wrong :(')}>console.error</button>
-  </div>`;
+  const fireEvent = (name, detail, bubbles = false) =>
+    useCallback(({ target }) => {
+      target.dispatchEvent(
+        new CustomEvent(name, {
+          composed: true,
+          bubbles,
+          detail,
+        }),
+      );
+    });
+
+  return html`
+    <div class="buttons">
+      <button @click=${log('hello world!')}>console.log</button>
+      <button @click=${warn('a warning message')}>console.warn</button>
+      <button @click=${info('this is an informative message')}>console.info</button>
+      <button @click=${error('something goes wrong :(')}>console.error</button>
+    </div>
+    <div class="buttons">
+      <button @click=${fireEvent('event-one')}>event-one</button>
+      <button @click=${fireEvent('event-two', { foo: 'bar' }, true)}>event-two</button>
+    </div>
+  `;
 }
 
 customElements.define('demo-app', component(DemoApp));
