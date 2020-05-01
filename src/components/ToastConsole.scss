@@ -3,8 +3,10 @@
   bottom: 0;
   left: 0;
   right: 0;
-  margin: 10px;
+  margin-bottom: 1px;
   line-height: 1.5;
+  font-family: monospace, monospace;
+  font-size: 15px;
 }
 
 p {
@@ -12,12 +14,13 @@ p {
 }
 
 .logger {
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   visibility: hidden;
   transform: translateY(120%);
   transition: visibility 0s linear 0.3s, transform 0.3s cubic-bezier(0.25, 0.1, 0, 1.02);
   will-change: transform;
-  width: auto;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
 }
 
 .opened-true {
@@ -28,17 +31,25 @@ p {
 }
 
 .log {
-  background-color: var(--toast-console-log-bg, #d9eacb);
+  color: var(--toast-console-log-color, #484c46);
+  border-color: var(--toast-console-log-border, #cae0b9);
+  background-color: var(--toast-console-log-bg, #e5f3da);
 }
 
 .info {
-  background-color: var(--toast-console-info-bg, #d5f0fe);
+  color: var(--toast-console-info-color, #404b57);
+  border-color: var(--toast-console-info-border, #bdd2e8);
+  background-color: var(--toast-console-info-bg, #ddf0ff);
 }
 
 .warn {
-  background-color: var(--toast-console-warn-bg, #ffecbc);
+  color: var(--toast-console-warn-color, #4a2e01);
+  border-color: var(--toast-console-warn-border, #f9eeb2);
+  background-color: var(--toast-console-warn-bg, #fffcdf);
 }
 
 .error {
-  background-color: var(--toast-console-error-bg, #facbdb);
+  color: var(--toast-console-error-color, #fc0006);
+  border-color: var(--toast-console-error-border, #fecbce);
+  background-color: var(--toast-console-error-bg, #ffecec);
 }

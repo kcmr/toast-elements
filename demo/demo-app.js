@@ -2,8 +2,8 @@ import { useCallback, html } from 'haunted';
 import { component } from 'haunted-lit-element';
 
 function DemoApp() {
-  const log = (m) => useCallback(() => console.log(m));
-  const warn = (m) => useCallback(() => console.warn(m));
+  const log = (m) => useCallback(() => console.log(m, { foo: 'bar' }));
+  const warn = (m) => useCallback(() => console.warn(m, 'another'));
   const info = (m) => useCallback(() => console.info(m));
   const error = (m) => useCallback(() => console.error(m));
 
