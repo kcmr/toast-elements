@@ -1,4 +1,5 @@
 import { useState, useEffect, html } from 'haunted';
+import '../custom-elements/toast-container';
 
 const properties = {
   events: { type: Array },
@@ -28,9 +29,11 @@ function ToastEvent({ events = [] }) {
   }, [setType, setDetail, setBubbles]);
 
   return html`
-    <div>Type: ${type}</div>
-    <div>Bubbles: ${bubbles}</div>
-    <div>${detail ? `Detail: ${JSON.stringify(detail, null, 2)}` : ''}</div>
+    <toast-container .opened=${Boolean(type)}>
+      <div>Type: ${type}</div>
+      <div>Bubbles: ${bubbles}</div>
+      <div>${detail ? `Detail: ${JSON.stringify(detail, null, 2)}` : ''}</div>
+    </toast-container>
   `;
 }
 

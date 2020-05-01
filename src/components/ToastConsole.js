@@ -1,5 +1,6 @@
 import { useState, useEffect, html } from 'haunted';
 import styles from './ToastConsole.scss';
+import '../custom-elements/toast-container';
 
 const properties = {
   duration: { type: Number },
@@ -55,9 +56,9 @@ function ToastConsole({
   }, [setType, setOpened, setMessage]);
 
   return html`
-    <div class="logger ${type} opened-${opened}">
-      <p>${message}</p>
-    </div>
+    <toast-container .opened=${opened}>
+      <p class="logger ${type}">${message}</p>
+    </toast-container>
   `;
 }
 

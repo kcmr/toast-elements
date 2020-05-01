@@ -1,0 +1,20 @@
+:host {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.toast {
+  visibility: hidden;
+  transform: translateY(120%);
+  transition: visibility 0s linear 0.3s, transform 0.3s cubic-bezier(0.25, 0.1, 0, 1.02);
+  will-change: transform;
+}
+
+.opened-true {
+  visibility: visible;
+  transform: translateY(0);
+  transition-delay: 0s;
+  transition-duration: 0.3s, 0.2s;
+}
