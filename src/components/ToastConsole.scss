@@ -1,0 +1,44 @@
+:host {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 10px;
+  line-height: 1.5;
+}
+
+p {
+  margin: 0;
+}
+
+.logger {
+  padding: 1rem;
+  visibility: hidden;
+  transform: translateY(120%);
+  transition: visibility 0s linear 0.3s, transform 0.3s cubic-bezier(0.25, 0.1, 0, 1.02);
+  will-change: transform;
+  width: auto;
+}
+
+.opened-true {
+  visibility: visible;
+  transform: translateY(0);
+  transition-delay: 0s;
+  transition-duration: 0.3s, 0.2s;
+}
+
+.log {
+  background-color: var(--toast-console-log-bg, #d9eacb);
+}
+
+.info {
+  background-color: var(--toast-console-info-bg, #d5f0fe);
+}
+
+.warn {
+  background-color: var(--toast-console-warn-bg, #ffecbc);
+}
+
+.error {
+  background-color: var(--toast-console-error-bg, #facbdb);
+}
