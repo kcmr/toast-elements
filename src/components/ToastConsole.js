@@ -1,6 +1,6 @@
-import { useState, useEffect, html } from 'haunted';
-import styles from './ToastConsole.scss';
+import { html, useEffect, useState } from 'haunted';
 import '../custom-elements/toast-container';
+import styles from './ToastConsole.scss';
 
 const properties = {
   duration: { type: Number },

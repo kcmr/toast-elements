@@ -2,7 +2,7 @@ import { html } from 'haunted';
 import styles from './ToastContainer.scss';
 
 const properties = {
-  opened: { type: Boolean, attribute: false },
+  opened: { type: Boolean },
 };
 
 function ToastContainer({ opened = false }) {
