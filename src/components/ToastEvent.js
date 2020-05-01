@@ -1,5 +1,6 @@
 import { html, useEffect, useState } from 'haunted';
 import '../custom-elements/toast-container';
+import { useResetBooleanTimeout } from '../hooks';
 
 const properties = {
   events: { type: Array },
@@ -10,15 +11,14 @@ function ToastEvent({ events = [], duration = 2000 }) {
   const [type, setType] = useState();
   const [bubbles, setBubbles] = useState();
   const [detail, setDetail] = useState();
-  const [opened, setOpened] = useState(false);
+  const opened = useResetBooleanTimeout(duration);
 
   function onEventCaptured(event) {
-    setOpened(true);
     setType(event.type);
     setBubbles(String(event.bubbles));
     setDetail(event.detail);
-    this.timeout && clearTimeout(this.timeout);
-    this.timeout = setTimeout(() => setOpened(false), duration);
+    opened.setValue(true);
+    opened.reset();
   }
 
   useEffect(() => {
@@ -34,7 +34,7 @@ function ToastEvent({ events = [], duration = 2000 }) {
   }, [setType, setDetail, setBubbles]);
 
   return html`
-    <toast-container .opened=${opened}>
+    <toast-container .opened=${opened.value}>
       <div>Type: ${type}</div>
       <div>Bubbles: ${bubbles}</div>
       <div>${detail ? `Detail: ${JSON.stringify(detail, null, 2)}` : ''}</div>

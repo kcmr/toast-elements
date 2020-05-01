@@ -1,6 +1,7 @@
 import { html, useEffect, useState } from 'haunted';
 import '../custom-elements/toast-container';
 import styles from './ToastConsole.scss';
+import { useResetBooleanTimeout } from '../hooks';
 
 const properties = {
   duration: { type: Number },
@@ -27,9 +28,9 @@ function ToastConsole({
   methods = ['log', 'info', 'warn', 'error'],
   noConsole = false,
 }) {
-  const [opened, setOpened] = useState(false);
   const [type, setType] = useState('log');
   const [message, setMessage] = useState('');
+  const opened = useResetBooleanTimeout(duration);
   const originalMethods = new Map();
   const consoleEnabled = !noConsole;
 
@@ -39,10 +40,9 @@ function ToastConsole({
 
       console[method] = function (...args) {
         setType(method);
-        setOpened(true);
         setMessage(() => format(...args));
-        this.timeout && clearTimeout(this.timeout);
-        this.timeout = setTimeout(() => setOpened(false), duration);
+        opened.setValue(true);
+        opened.reset.call(this);
 
         consoleEnabled && originalMethods.get(method).call(this, ...args);
       };
@@ -53,10 +53,10 @@ function ToastConsole({
         console[method] = originalMethods.get(method);
       });
     };
-  }, [setType, setOpened, setMessage]);
+  }, [setType, opened, setMessage]);
 
   return html`
-    <toast-container .opened=${opened}>
+    <toast-container .opened=${opened.value}>
       <p class="logger ${type}">${message}</p>
     </toast-container>
   `;

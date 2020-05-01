@@ -1,16 +1,16 @@
-import { useState, useEffect } from 'haunted';
+import { useState } from 'haunted';
 
-export const useToggleDelay = (delay = 2000, initial = false) => {
-  const [value, setValue] = useState(initial);
+export const useResetBooleanTimeout = (delay = 2000) => {
+  const [value, setValue] = useState(false);
 
-  function toggle() {
-    if (value) {
-      this.timeout && clearTimeout(this.timeout);
-      this.timeout = setTimeout(() => setValue(false), delay);
-    }
+  function reset() {
+    this.timeout && clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => setValue(false), delay);
   }
 
-  useEffect(toggle, [value]);
-
-  return [value, setValue, toggle];
+  return {
+    value,
+    setValue,
+    reset,
+  };
 };
