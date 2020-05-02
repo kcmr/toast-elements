@@ -1,13 +1,14 @@
 import { html, useEffect, useState } from 'haunted';
 import '../custom-elements/toast-container';
 import { useResetBooleanTimeout } from '../hooks';
+import styles from './ToastEvent.scss';
 
 const properties = {
   events: { type: Array },
   duration: { type: Number },
 };
 
-function ToastEvent({ events = [], duration = 2000 }) {
+function ToastEvent({ events = [], duration = 4000 }) {
   const [type, setType] = useState();
   const [bubbles, setBubbles] = useState();
   const [detail, setDetail] = useState();
@@ -35,11 +36,13 @@ function ToastEvent({ events = [], duration = 2000 }) {
 
   return html`
     <toast-container .opened=${opened.value}>
-      <div>Type: ${type}</div>
-      <div>Bubbles: ${bubbles}</div>
-      <div>${detail ? `Detail: ${JSON.stringify(detail, null, 2)}` : ''}</div>
+      <div class="content">
+        <div>type: <code>${type}</code></div>
+        <div>bubbles: <code>${bubbles}</code></div>
+        <div>${detail ? html`detail: <code>${JSON.stringify(detail, null, 2)}</code>` : ''}</div>
+      </div>
     </toast-container>
   `;
 }
 
-export { ToastEvent, properties };
+export { ToastEvent, styles, properties };

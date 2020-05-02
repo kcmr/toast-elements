@@ -1,0 +1,20 @@
+:host {
+  line-height: 1.5;
+  font-size: 14px;
+  font-family: monospace, monospace;
+  color: #ff7faa;
+}
+
+.content {
+  max-width: 300px;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  background-color: #000;
+  padding: 0.8rem 1rem;
+  border-radius: 4px;
+  box-shadow: -1px 7px 14px -4px rgba(0, 0, 0, 0.5);
+}
+
+code {
+  color: #fff;
+}

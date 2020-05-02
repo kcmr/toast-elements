@@ -1,6 +1,7 @@
 import { defineCustomElement } from '../utils';
-import { ToastEvent, properties } from '../components/ToastEvent';
+import { ToastEvent, styles, properties } from '../components/ToastEvent';
 
 defineCustomElement('toast-event', ToastEvent, {
+  styles,
   properties,
 });
