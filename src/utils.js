@@ -6,11 +6,11 @@ const getStyle = (style) =>
     ${unsafeCSS(style)}
   `;
 
-export const defineCustomElement = (name, baseClass, { styles, properties } = {}) => {
+export const defineCustomElement = (name, renderer, { styles, properties } = {}) => {
   if (!customElements.get(name)) {
     customElements.define(
       name,
-      component(baseClass, {
+      component(renderer, {
         styles: getStyle(styles),
         properties,
       }),
