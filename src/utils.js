@@ -6,7 +6,7 @@ const getStyle = (style) =>
     ${unsafeCSS(style)}
   `;
 
-export const defineCustomElement = (name, renderer, { styles, properties } = {}) => {
+export const defineCustomElement = (name, renderer, { styles, properties = {} } = {}) => {
   if (!customElements.get(name)) {
     customElements.define(
       name,

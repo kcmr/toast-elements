@@ -1,5 +1,7 @@
 import { useCallback, html } from 'haunted';
-import { component } from 'haunted-lit-element';
+import styles from './demo-app.css';
+import { defineCustomElement } from '../src/utils';
+import './Button';
 
 function DemoApp() {
   const log = (m) => useCallback(() => console.log(m, { foo: 'bar' }));
@@ -20,16 +22,22 @@ function DemoApp() {
 
   return html`
     <div class="buttons">
-      <button @click=${log('hello world!')}>console.log</button>
-      <button @click=${warn('a warning message')}>console.warn</button>
-      <button @click=${info('this is an informative message')}>console.info</button>
-      <button @click=${error('something goes wrong :(')}>console.error</button>
+      <but-on class="green" @click=${log('hello world!')} text="console.log">console.log</but-on>
+      <but-on class="orange" @click=${warn('a warning message')} text="console.warn"></but-on>
+      <but-on
+        class="blue"
+        @click=${info('this is an informative message')}
+        text="console.info"
+      ></but-on>
+      <but-on class="red" @click=${error('something goes wrong :(')} text="console.error"></but-on>
     </div>
     <div class="buttons">
-      <button @click=${fireEvent('event-one')}>event-one</button>
-      <button @click=${fireEvent('event-two', { foo: 'bar' }, true)}>event-two</button>
+      <but-on @click=${fireEvent('event-one')} text="event-one"></but-on>
+      <but-on @click=${fireEvent('event-two', { foo: 'bar' }, true)} text="event-two"></but-on>
     </div>
   `;
 }
 
-customElements.define('demo-app', component(DemoApp));
+defineCustomElement('demo-app', DemoApp, {
+  styles,
+});

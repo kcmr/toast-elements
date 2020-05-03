@@ -1,0 +1,34 @@
+:host {
+  display: block;
+}
+
+but-on {
+  min-width: 130px;
+  margin: 0 5px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  padding: 5px 0;
+}
+
+.green {
+  color: green;
+  --but-on-bg: #bae08d;
+}
+
+.orange {
+  color: #86860b;
+  --but-on-bg: #fdf7c7;
+}
+
+.blue {
+  color: #2573b1;
+  --but-on-bg: #d3ecff;
+}
+
+.red {
+  color: #bf441d;
+  --but-on-bg: #ffc8b6;
+}
