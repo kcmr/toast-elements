@@ -22,7 +22,7 @@ function DemoApp() {
 
   return html`
     <div class="buttons">
-      <but-on class="green" @click=${log('hello world!')} text="console.log">console.log</but-on>
+      <but-on class="green" @click=${log('hello world!')} text="console.log"></but-on>
       <but-on class="orange" @click=${warn('a warning message')} text="console.warn"></but-on>
       <but-on
         class="blue"
