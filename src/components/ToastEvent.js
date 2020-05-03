@@ -38,7 +38,7 @@ function ToastEvent({ events = [], duration = 4000, closeOnClick = false }) {
         document.removeEventListener(event, onEventCaptured, true);
       });
     };
-  }, [setType, setDetail, setBubbles]);
+  }, [type, bubbles, detail]);
 
   return html`
     <toast-container .opened=${opened.value}>

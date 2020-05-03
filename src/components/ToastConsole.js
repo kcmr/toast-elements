@@ -60,7 +60,7 @@ function ToastConsole({
         console[method] = originalMethods.get(method);
       });
     };
-  }, [setType, opened, setMessage]);
+  }, [type, message, opened]);
 
   return html`
     <toast-container .opened=${opened.value}>
