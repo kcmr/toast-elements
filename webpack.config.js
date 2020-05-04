@@ -1,9 +1,10 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = ({ mode }) => {
+module.exports = () => {
   return {
-    mode,
+    mode: 'development',
+    devtool: 'source-map',
     context: __dirname,
     entry: './demo/index.js',
     module: {
@@ -24,6 +25,5 @@ module.exports = ({ mode }) => {
       }),
       new webpack.HotModuleReplacementPlugin(),
     ],
-    devtool: mode === 'development' ? 'source-map' : 'none',
   };
 };

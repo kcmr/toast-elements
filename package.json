@@ -11,7 +11,7 @@
   "license": "MIT",
   "scripts": {
     "test": "echo \"Not yet :(\" && exit 0",
-    "start": "webpack-dev-server --env.mode development"
+    "start": "webpack-dev-server"
   },
   "dependencies": {
     "haunted": "^4.7.0",
